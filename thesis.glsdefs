@@ -1,0 +1,90 @@
+\ifglsentryexists{ne}{}%
+{%
+\gls@defglossaryentry{ne}%
+{%
+name={NE},%
+sort={NE},%
+type={acronym},%
+first={neuronal evolution\glsspace (NE)},%
+firstplural={neuronal evolutions\glsspace (NEs)},%
+text={NE},%
+plural={NEs},%
+description={neuronal evolution},%
+descriptionplural={neuronal evolution\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={neuronal evolution},%
+longplural={neuronal evolutions},%
+short={NE},%
+shortplural={NEs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{nn}{}%
+{%
+\gls@defglossaryentry{nn}%
+{%
+name={NN},%
+sort={NN},%
+type={acronym},%
+first={neuronal networks\glsspace (NN)},%
+firstplural={neuronal networkss\glsspace (NNs)},%
+text={NN},%
+plural={NNs},%
+description={neuronal networks},%
+descriptionplural={neuronal networks\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={neuronal networks},%
+longplural={neuronal networkss},%
+short={NN},%
+shortplural={NNs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{texteditor}{}%
+{%
+\gls@defglossaryentry{texteditor}%
+{%
+name={editor},%
+sort={editor},%
+type={main},%
+first={editor},%
+firstplural={editors},%
+text={editor},%
+plural={editors},%
+description={A text editor is a type of program used for editing plain text files.},%
+descriptionplural={A text editor is a type of program used for editing plain text files.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
