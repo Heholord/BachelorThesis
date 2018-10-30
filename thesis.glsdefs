@@ -58,19 +58,79 @@ parent={},%
 %
 }%
 }%
-\ifglsentryexists{texteditor}{}%
+\ifglsentryexists{neat}{}%
 {%
-\gls@defglossaryentry{texteditor}%
+\gls@defglossaryentry{neat}%
 {%
-name={editor},%
-sort={editor},%
+name={NEAT},%
+sort={NEAT},%
+type={acronym},%
+first={Neuro-Evolution of Augmenting Topologies\glsspace (NEAT)},%
+firstplural={Neuro-Evolution of Augmenting Topologiess\glsspace (NEATs)},%
+text={NEAT},%
+plural={NEATs},%
+description={Neuro-Evolution of Augmenting Topologies},%
+descriptionplural={Neuro-Evolution of Augmenting Topologies\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Neuro-Evolution of Augmenting Topologies},%
+longplural={Neuro-Evolution of Augmenting Topologiess},%
+short={NEAT},%
+shortplural={NEATs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{ai}{}%
+{%
+\gls@defglossaryentry{ai}%
+{%
+name={AI},%
+sort={AI},%
+type={acronym},%
+first={Artificial Intelligence\glsspace (AI)},%
+firstplural={Artificial Intelligences\glsspace (AIs)},%
+text={AI},%
+plural={AIs},%
+description={Artificial Intelligence},%
+descriptionplural={Artificial Intelligence\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Artificial Intelligence},%
+longplural={Artificial Intelligences},%
+short={AI},%
+shortplural={AIs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{lua}{}%
+{%
+\gls@defglossaryentry{lua}%
+{%
+name={LUA},%
+sort={LUA},%
 type={main},%
-first={editor},%
-firstplural={editors},%
-text={editor},%
-plural={editors},%
-description={A text editor is a type of program used for editing plain text files.},%
-descriptionplural={A text editor is a type of program used for editing plain text files.},%
+first={LUA},%
+firstplural={LUAs},%
+text={LUA},%
+plural={LUAs},%
+description={"Lua is a powerful, efficient, lightweight, embeddable scripting language. It supports procedural programming, object-oriented programming, functional programming, data-driven programming, and data description."\footnote {\url {https://www.lua.org/about.html}}},%
+descriptionplural={"Lua is a powerful, efficient, lightweight, embeddable scripting language. It supports procedural programming, object-oriented programming, functional programming, data-driven programming, and data description."\footnote {\url {https://www.lua.org/about.html}}},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%
