@@ -3,10 +3,20 @@
 \chapter{Related Work}
 \label{sec:related}
 
-\section{\gls{neat}}
+\section{NEAT}
 \label{sec:related:neat}
-	NEAT stands for NeuroEvolution of Augmenting Topologies and it's concepts have been published 
-	Over the time many implementations in many programming languages were created\footnote{\url{http://eplex.cs.ucf.edu/neat_software/#NEAT}, last accessed on 31st October 2018}. Furthermore many extensions and amendments exist\footnote{\url{https://www.cs.ucf.edu/~kstanley/neat.html}, last accessed on 31st October 2018}\footnote{\url{http://eplex.cs.ucf.edu/hyperNEATpage/HyperNEAT.html}}\footnote{\url{http://eplex.cs.ucf.edu/ESHyperNEAT/}, last accessed on 31st October 2018}.
+	NEAT stands for NeuroEvolution of Augmenting Topologies and is a method of constructing generation based \gls{nn} with the use of \gls{ga}. \cite{stanley_evolving_2002}
+	Over the time many implementations in many programming languages were created\footnote{\url{http://eplex.cs.ucf.edu/neat_software}, last accessed on 31st October 2018}. Furthermore many extensions and amendments exist\footnote{\url{https://www.cs.ucf.edu/~kstanley/neat.html}, last accessed on 31st October 2018}\footnote{\url{http://eplex.cs.ucf.edu/hyperNEATpage/HyperNEAT.html}}\footnote{\url{http://eplex.cs.ucf.edu/ESHyperNEAT}, last accessed on 31st October 2018} that try to solve different aspects of different problems more efficiently than the basic implementation.\cite{kohl_integrated_2011} \\
+	Still \gls{neat} has proven to provide solutions to 3 common problems \cite{stanley_evolving_2002}: 
+	\begin{enumerate}
+		\item \textbf{Competing Conventions}
+			In ordinary \gls{ga}s it happens that genomes which hold similar solutions but are differently encoded create worse children than their parents have been. \\
+			In \gls{neat} historical markings are introduced, namely the innovation number. When a new structure within the genomes genotypes is created, this structure will be assigned with an incremented innovation number. So whenever two individuals are chosen to mate, their genomes with the same innovation number (therefore it is a historical marking) are aligned and the different genomes, which don't align with the ones from the partners, are exchanged.
+		\item \textbf{Protecting Innovation through Speciation}
+			Many times genomes get eradicated or lose informations => species and historical markings (innovation number)
+		\item \textbf{Topological Innovation}
+			Big or random initial topology can cause problems
+	\end{enumerate}
 
 https://stackoverflow.com/questions/45390481/what-is-neat-neuroevolution-of-augmenting-topologies
 

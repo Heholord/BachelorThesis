@@ -148,6 +148,36 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{ann}{}%
+{%
+\gls@defglossaryentry{ann}%
+{%
+name={ANN},%
+sort={ANN},%
+type={acronym},%
+first={Artificial Neuronal Network\glsspace (ANN)},%
+firstplural={Artificial Neuronal Networks\glsspace (ANNs)},%
+text={ANN},%
+plural={ANNs},%
+description={Artificial Neuronal Network},%
+descriptionplural={Artificial Neuronal Network\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Artificial Neuronal Network},%
+longplural={Artificial Neuronal Networks},%
+short={ANN},%
+shortplural={ANNs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
 \ifglsentryexists{lua}{}%
 {%
 \gls@defglossaryentry{lua}%
