@@ -23,7 +23,7 @@
 		Some of them block the path to the goal and others cause damage to Mario's health. A few of them give health upgrades to Mario or add coins to the players account, although the coins are ignored in the implementation of the \gls{ai}. Since there are many different positions in which Mario can stay and the speed of the game depends mostly of the player and his/her/its desicions the environment of Super Mario World is rather complex when compared to the second game Flappy Bird \ref{sec:analysis:flappy}.\\
 		This complex world leaves the expectation that many hundred thousand runs are necessary to learn how to complete a level. However MarI/O implementation reached to goal after approximately $2664.29$ runs on average in the simulations described later in this section. Still 2 of the 9 simulations didn't reach the goal once.\\
 		\todo{fitnessfunction, formlar? when was goal reached} \\
-		Later in this section 3 figures with 3 homomorphic graphs will be shown. The three different figures display the success of the algorithm in different classes of initial population size. Since the \gls{neat}-algorithm used does not produce a deterministic amount of populations after the first generation (in general: Generation 0), the initial population size define these classes. There where three classes choosen with a scaling factor of 5 between them. These initial population sizes are 10, 50 and 250. Whether or not the initial population sizes are well chosen will be discussed shortly in the conclusion section (see \ref{sec:analysis:conclusion}) of this chapter. Depending on the evolution of the \gls{nn}, there are a certain amount of generations evolved. Every generation contains their own set of species. And on the other hand the species contain the genomes. In generation 0 every species contains only one genome each. The sum of all genomes in all species of a generation is called the population. In the cases where the initial population size is 10 or 50 over time to many generations where created to show a viewable graph in the end. That's why only 30 generations where picked in the display with even distances between them. Still a continuous line with the best run of a population is showed above all generations, even the skipped ones. \\
+		Later in this section 3 figures with 3 homomorphic graphs will be shown. The three different figures display the success of the algorithm in different classes of initial population size. Since the \gls{neat}-algorithm used does not produce a deterministic amount of populations after the first generation (in general: Generation 0), the initial population size define these classes. There where three classes choosen with a scaling factor of 5 between them. These initial population sizes are 10, 50 and 250. Whether or not the initial population sizes are well chosen will be discussed shortly in the conclusion section (see \ref{sec:compare:params}) of this chapter. Depending on the evolution of the \gls{nn}, there are a certain amount of generations evolved. Every generation contains their own set of species. And on the other hand the species contain the genomes. In generation 0 every species contains only one genome each. The sum of all genomes in all species of a generation is called the population. In the cases where the initial population size is 10 or 50 over time to many generations where created to show a viewable graph in the end. That's why only 30 generations where picked in the display with even distances between them. Still a continuous line with the best run of a population is showed above all generations, even the skipped ones. \\
 		In the later descriptions of the population classes there are two types of runs introduced. First is the "plot-run" which indicates the simulation and the graph. Inside of this graph there were many "runs" which represent the runs of the population (genomes) of each species. In figure \ref{fig:mario} there are 3 individual runs displayed. On average one plot-run consists of $4217.\overline{2}$ runs, whereas population 10 has $2828$ runs on average, population 50 contains of $4494.\overline{6}$ runs on average and population 250 of $5329$ runs averagely.\\
 		In order to understand the fundamental differences of these simulations, the population classes are examined in more detail: 
 		\paragraph{Population 10 / Generation 500}
@@ -128,30 +128,24 @@
 		
 	% FLAPPY BIRD ###############################################################
 	
-	\section{Machine Learning Flappy Bird}
+	\section{NEAT\_FlappyBird}
 		\label{sec:analysis:flappy}
-		\todo{change this title}
 		
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=1\textwidth]{graphics/flappy/flappy_sim_s1}
+			\includegraphics[width=1\textwidth]{graphics/flappy/flappy}
 			\caption{Flappy Birds simulation}
 			\label{fig:flappy}
 		\end{figure}
-		
-		\begin{enumerate}
-			\item explanation of environment and expectations
-			\item fitnessfunction, formlar?
-			\item explanation of graph of population (10, 50, 250) averaged on generations (30 generations evenly choosen [equal spaces between generation numbers])  (abstract explanation)
-			\item check if expectations of marI/O can confirm
-			\item huge difference between best runs and majority of runs (extreme luck), => double graph
-			\item Differences between runs 
-			\item unexpectedly bad results
-			\item => Neat vs other machine learning
-			\begin{enumerate}
-				\item Differences between runs (lucky runs with 4th champion generation)
-			\end{enumerate}
-		\end{enumerate}
+	
+		As mentioned in section \ref{sec:related:tools}, NEAT\_FlappyBird (see figure \ref{fig:flappy}) is an implementation of \gls{neat}-algorithm written in Python using the \gls{neat} framework NEAT-Pyhton \footnote{\url{https://neat-python.readthedocs.io}, last accessed 30th October 2018}. It provides a solution for mastering the game Flappy Bird which was also rewritten in Python. In Flappy Bird a level is a two dimensional, infinite map with obstacles along the way. The player, in the representation of a bird, moves in a constant speed to the right, where new obstacles are generated. These obstacles are pipes which create gaps, through which the bird has to fly (see figure \ref{fig:flappy}). \\
+		Therefore the player has only one input, namely if he/she/it wants to fly up, or if not then the player automatically falls down. Since there is only one decision to make the game is rather simple compared to Super Mario World (see section \ref{sec:analysis:mario}).\\
+		\todo{fitnessfunction, formlar?}
+		This simple set-up creates the expectation that the \gls{neat} algorithm should be able to find a solution with a score above a certain threshold (which is defined later in this section). In fact all simulations exceeded this threshold and the generations used where far lower the maximum generation defined for this simulations. NEAT\_FlappyBird reached the fitness threshold after $1047.\overline{4}$ runs on average. \\
+		In this section, 3 figures similar to the ones used in section \ref{sec:analysis:mario} are shown. However, this time these figures are split into two ranges since the details of the graph are too far apart. Therefore a simulation of a population class contains 3 plot-runs whereas one plot-run is displayed in 2 graphs of different ranges.  As the size of the population classes the same 3 sizes where choosen as used in the MarI/O simulation, which are 10, 50 and 250. \\
+		Again a maximum amount of 30 generations are displayed in the graphs when the generation size was bigger than 30. Luckily, this was only the case in the population 10 simulations. Also, again, the generations contain the species, which by them self contain the genomes (the population). 
+		As in MarI/O a "plot-run" indicates the simulation and also the graph which was plotted based on the simulation. Inside of this graph there were many "runs" executed which represent the runs of the population (genomes) of each species. \\
+		Now the simulations are examined in more detailed categorized by their population size:
 		
 		\paragraph{Population 10 / Generation 500}
 			\begin{figure}[h!]
@@ -169,49 +163,66 @@
 					\includegraphics[width=1\textwidth]{graphics/flappy/pop10_run3} % second figure itself
 				\end{minipage}
 				\caption{Flappy Bird Population 10}
+				\label{fig:flappy10}
 			\end{figure}
+			As it is with the graphical representations of MarI/O (see figure \ref{fig:mario10} for example) the vertical axis shows the fitness score average of the genomes within a species. Again, the horizontal axis portrays the generations containing the species. Each generation contains up to 10 populations which is divided into species and genomes within species. In this \gls{neat}-implementation a fixed size of generations was specified.\\
+			As in MarI/O the best runs of genomes per generation is marked with a blue line. In the Flappy Bird simulations the best runs and the median of each species (or the $average\_distance$ described in section \ref{par:mario10}) are to far apart to be able to display them in one graph of linear scale. That's why two graphs are shown with different fitness ranges. The upper part displays a range from -100 to 1500 and the upper plot shows values in the range of -50 to 115 fitness score.\\
+			Although the $average\_distance$  is big in general, this plot-run has the smallest $avergage\_distance$ of the three simulation classes with an average value of $51.3$.
+			In this three plot-runs the upper boundary was $500$ generations however there was an fitness-threshold implemented as well which ended the simulation when a fitness score over 600 was reached. Plot-run 1 launched 81 generations, plot-run 2 launched 307 generations and plot-run 3 had 367 generations before this threshold was exceeded. This results in an average skipping of $8.3\overline{8}$ generations inside the graphs, between two displayed generations. \\
+			Interestingly, plot-run 2 and 3 managed to enhance their score by generation 30 but dropped again latest at generation 130, however all three plot-runs managed to reach a score beyond 600. Plot-run 1 reached this goal the earliest in generation 81 and therefore needed less than a third of the generations plot-run 2 and 3 spawned.\\
+			In comparison to MarI/O (see section \ref{sec:analysis:mario}) where in generation 0 there were as many species spawned as configured with the population size, whereas every species contained only 1 genome, this implementation of the \gls{neat} algorithm spawns the configured amount of genomes first and after the first simulation run assigns them into species. Moreover, the generation number starts from 1 and not from 0 as in MarI/O. So after the first run on average $5.\overline{3}$ species where classified. In generation 80 on average $1.\overline{6}$ species where left. Since there was a setting configured which reseted the species if a total extinction (no species left) has occoured. This values have to be considered carefully.\\
+			In plot-run 2 and 3 there was a significant $average\_regress$ made of approximately $-24.54$ in plot-run 2 and $-11.38$ in plot-run 3. Plot-run 2 regressed 67 times and plot-run 3 41 times. Plot-run 1 kept the $average\_regress$ far lower with an approximate value of $-1.42$.\\
+			Since plot-run 1 has the fewest generations the $average\_fitness\_increase$ is the highest with a value of around $16.04$, whereas plot-run 2 has a value of $\approx6.86$ and plot-run 3 of $\approx10.54$. However, the average score of each generation is the lowest in plot-run 1 ($\approx-15.87$). Plot-run 2 has a value of approximately $-4.22$ and plot-run 3 of $-10.62$. \\
+			Since the game environment is open ended the expectations from MarI/O (see \ref{par:mario10}) that $\lim\limits_{n \to \infty} average\_fitness\_increase(n) = 0$ does not hold here. However the opposite is true that $\lim\limits_{n \to \infty} average\_fitness\_increase(n) = \infty$ is to be expected. Therefore there was the fitness-threshold introduced to end the simulation before an infinite flight is expected.
 		
 		\paragraph{Population 50 / Generation 100}
-			a
-%			\begin{figure}[h]
-%				\centering
-%				\begin{minipage}{0.33\textwidth}
-%					\centering
-%					\includegraphics[width=1\textwidth]{graphics/flappy/pop50_run1} % first figure itself
-%				\end{minipage}\hfill
-%				\begin{minipage}{0.33\textwidth}
-%					\centering
-%					\includegraphics[width=1\textwidth]{graphics/flappy/pop50_run2} % second figure itself
-%				\end{minipage}
-%				\begin{minipage}{0.33\textwidth}
-%					\centering
-%					\includegraphics[width=1\textwidth]{graphics/flappy/pop50_run3} % second figure itself
-%				\end{minipage}
-%				\caption{Flappy Bird Population 50}
-%			\end{figure}
+			\begin{figure}[h]
+				\centering
+				\begin{minipage}{0.33\textwidth}
+					\centering
+					\includegraphics[width=1\textwidth]{graphics/flappy/pop50_run1} % first figure itself
+				\end{minipage}\hfill
+				\begin{minipage}{0.33\textwidth}
+					\centering
+					\includegraphics[width=1\textwidth]{graphics/flappy/pop50_run2} % second figure itself
+				\end{minipage}
+				\begin{minipage}{0.33\textwidth}
+					\centering
+					\includegraphics[width=1\textwidth]{graphics/flappy/pop50_run3} % second figure itself
+				\end{minipage}
+				\caption{Flappy Bird Population 50}
+				\label{fig:flappy50}
+			\end{figure}
+			This simulations have an average $average\_distance$ of $270.25$. In this instance the standard deviation should be taken into account, which is also quite high with a value of 192.24. 
+			In the plot-runs of this population class the upper boundary was $100$ generations however, again the fitness-threshold of 600 was exceeded in every plot-run. Plot-run 1 launched 4 generations, plot-run 2 launched 9 generations and plot-run 3 had 24 generations when the threshold was exceeded. Therefore no generation had to be skipped in the graphical display.\\
+			After the first run, in generation 1, the genomes where divided into $9.\overline{3}$ species on average. At the end of generation 4, plot-run 2 and 3 kept their speices and plot-run 1 lost one species. The reset of species did not had to be used at this point. In plot-run 3, 7 species where left at the end (generation 24).
+			In plot-run 1 no regress occurred and in plot-run 2 only one time a regress was made which results in an average-regress of $-0.07$. Plot-run 3 had many potential outbreaks which resulted to 9 regresses with an $average\_regress$ of $\approx-45.84$.\\
+			The $average\_fitness\_increase$ is the highest in plot-run 1 since the generation count is the smallest. It's value is $461.52$. The $average\_fitness\_increase$ values are similar in plot-run 2 and 3 with approximately 87.93 in plot-run 2 and 92.79 in plot-run 3. The average score of each generation remains negative in this simulations for all plot-runs.
 		
-		\paragraph{Population 250 / Generation 30}
-		
-			\begin{enumerate}
-				\item best runs are exceptions (outside of whiskers)
-			\end{enumerate}
-			
-%			\begin{figure}[h]
-%				\centering
-%				\begin{minipage}{0.33\textwidth}
-%					\centering
-%					\includegraphics[width=1\textwidth]{graphics/flappy/pop250_run1} % first figure itself
-%				\end{minipage}\hfill
-%				\begin{minipage}{0.33\textwidth}
-%					\centering
-%					\includegraphics[width=1\textwidth]{graphics/flappy/pop250_run2} % second figure itself
-%				\end{minipage}
-%				\begin{minipage}{0.33\textwidth}
-%					\centering
-%					\includegraphics[width=1\textwidth]{graphics/flappy/pop250_run3} % second figure itself
-%				\end{minipage}
-%				\caption{Flappy Bird Population 250}
-%			\end{figure}
+		\paragraph{Population 250 / Generation 30}	
+			\begin{figure}[h]
+				\centering
+				\begin{minipage}{0.33\textwidth}
+					\centering
+					\includegraphics[width=1\textwidth]{graphics/flappy/pop250_run1} % first figure itself
+				\end{minipage}\hfill
+				\begin{minipage}{0.33\textwidth}
+					\centering
+					\includegraphics[width=1\textwidth]{graphics/flappy/pop250_run2} % second figure itself
+				\end{minipage}
+				\begin{minipage}{0.33\textwidth}
+					\centering
+					\includegraphics[width=1\textwidth]{graphics/flappy/pop250_run3} % second figure itself
+				\end{minipage}
+				\caption{Flappy Bird Population 250}
+				\label{fig:flappy250}
+			\end{figure}
+			In three plot-runs have an average $average\_distance$ of $636.5$. Compared to the population 50 instances the standard deviation is lower with a value of $\approx63.14$. 
+			In the plot-runs of this population class the upper boundary was $30$ generations however, again the fitness-threshold of 600 was exceeded in every plot-run. Plot-run 1 and 2 launched 3 generations, and plot-run 3 had 4 generations when the threshold was exceeded. Again, no generation had to be skipped in the graphical display.\\
+			After the first run, in generation 1, the genomes where divided into $22.\overline{3}$ species on average. At the end of generation 3, all plot-runs contained more than 10 species each.\\
+			Interestingly all plot-runs could avoid regress within the next generations. \\
+			The $average\_fitness\_increase$ was high in general with a value of 433.86 in plot-run 1, 537.57 in plot-run 2 and 347.07 in plot-run 3 since there were few generations spawned.\\
+			Since the \gls{neat} algorithm had no problems with this game it is more interesting to see how this population classes compare to one another.
 		
 		\paragraph{Comparison of the results}
 			\begin{table}[h]
@@ -219,38 +230,29 @@
 				\resizebox{\textwidth}{!}{
 					\begin{tabular}[width=0.5\textwidth]{@{}ll|l|l|l|l@{}}
 						\toprule
-						{\Large MarI/O} & avg. runs /$\sigma$ 			& avg. fitness score /$\sigma$ 	& avg distance /$\sigma$ 	& avg. regress /$\sigma$ & avg. fitness increase /$\sigma$ 	\\ \midrule
-						Population 10  	& 2828 /2055.44             	& 1231.42 /531.37      			& 1107.09 /534.5         	& -182.03 /144.01        & 10.6 /8.28             			\\
-						Population 50  	& $4494.\overline{6}$ /176.09	& 960.96 /321.34       			& 1405.96 /664.75        	& -105.56 /86.01         & 30 /10.78              			\\
-						Population 250 	& 5329 /656.74               	& 776.31 /57.88        			& 1826.32 /81.79        	& -29.25 /29.16          & 122.76 /9.76           			\\ \bottomrule
+						{\Large NEAT\_FlappyBird} 	& avg. runs /$\sigma$ 			& avg. fitness score /$\sigma$ 	& avg distance /$\sigma$ 	& avg. regress /$\sigma$ 	& avg. fitness increase /$\sigma$ 	\\ \midrule
+						Population 10  				& 1684 /714.01             		& -10.23 /5.84      			& 51.3 /18.93         		& -12.45 /11.59      		& 11.15 /4.62            			\\
+						Population 50  				& $626.\overline{6}$ /531.71	& -9.77 /2.95       			& 270.24 /192.24        	& -15.30 /26.45      		& 214.08 /214.30           			\\
+						Population 250 				& $831.\overline{6}$ /139.72 	& -13.81 /1.38       			& 638.5 /63.14        		& 0 /0     					& 439.5 /95.38         				\\ \bottomrule
 					\end{tabular}
 				}
-				\caption{MarI/O Population Comparison Overview}
-				\label{tab:mario}
+				\caption{Flappy Bird Population Comparison Overview}
+				\label{tab:flappy}
 			\end{table}
-		
+	
+			\todo{Differences and similarities between runs in graph} \\
+			In order to compare the results, the same 5 distinct values (see table \ref{tab:flappy}) of the plot-runs where calculated, that were taken into consideration in section \ref{sec:analysis:mario}.\\
+			The most obvious observation is that the average fitness increase rises with the amount of populations used, since the generations remain low in count when the threshold is reached. Secondly, the average distance (from the species median to the best genome run) tend to rise as well with a bigger population size.\\ 
+			The other measurement values leave little to no conclusions since the values don't rise or fall with growing/shrinking population sizes. The average regress, for example tend to rise between population class 10 and 50 but is 0 in population class 250. The question is, if the population class 250 would have a greater regress than the other two population instances if there would be any (future) regress. the average fitness score is non rising/shrinking as well, however the standard deviation seems to shrink with greater population size. Probably, the negative values of the fitness score depend on the environment of Flappy Birds, where only partially well learned birds can make it through the first obstacle (namely the pipes).\\
+			Since there is no defined goal, the fitness-threshold can be taken into consideration when deciding how good simulations have been. Since the threshold was exceeded in every plot-run, the last generation holds the best run of a plot-run. The fewest average runs were done by population class 50 with averagely $626.\overline{6}$ runs. However population class 250 had the smallest standard deviation of their running length, which indicates that the goal can be more consistently reached around the $831.\overline{6}$th run compared to population count 10 and 50.
+			
 		\subsection{Plain Machine learning flappy bird}
 			\begin{enumerate}
 				\item better results
 				\item multi simulation made it easier
 				\item easy algorithm for easy environment might be explanation for better results
+				\item \begin{enumerate}
+					\item Differences between runs (lucky runs with 4th champion generation)
+				\end{enumerate}
 			\end{enumerate}
 			\paragraph{Comparison to \gls{neat} results}
-	
-	
-	\section{Conclusion}
-		\label{sec:analysis:conclusion}
-		\begin{enumerate}
-			\item Population sizes smart? (10, 50, 250)
-			\item differences / similarities in implementation (fixed size in machine learning flappy bird whereas dynamic species with marI/O)
-			\item differences / similarities in outcome
-			\item future studies
-				\begin{itemize}
-					\item genome/generation plot \& differences to other plot
-					\item compare calculations with all data not only with maxfitness in case of $average\_fitness\_increase$ and $average\_regress$
-					\item check in text for (future or further)
-				\end{itemize}
-			\item test MarI/O previous evolutions on other levels (short \ref{sec:conclusion})
-			\item table with all the data collected 
-		\end{enumerate}
-

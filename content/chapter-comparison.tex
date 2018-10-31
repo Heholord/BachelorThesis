@@ -4,20 +4,55 @@
 \chapter{Comparison and Meta-Analysis}
 \label{sec:compare}
 
-\section{Concepts Section 1}
-\label{sec:compare:sec1}
+\section{Ignored Parameters}
+\label{sec:compare:params}	
+	\begin{enumerate}
+		\item abstract parameters
+		\begin{itemize}
+			\item population size (maybe not choosen well => futer work)
+			\item Population sizes smart? (10, 50, 250)
+			\item many wheels that can be turend
+			\item further work, checking influence of nn parameters
+		\end{itemize}
+		\item differen setup => similar goal
+		\item differences / similarities in neat implementation (fixed size in machine learning flappy bird whereas dynamic species with marI/O)
+	\end{enumerate}
 
-\section{Parameters}
-\begin{enumerate}
-	\item abstract parameters
+\section{Comparison of the different game environment}
+\label{sec:compare:compare}	
+	\begin{enumerate}
+	\item differences / similarities in outcome
+	table with all the data collected (non concrete values because they depend on games (arrows)) 		
+	\begin{table}[h]
+		\centering
+		\resizebox{\textwidth}{!}{
+			\begin{tabular}[width=0.5\textwidth]{@{}ll|l|l|l|l@{}}
+				\toprule
+				Data Trend Comparison		& avg. runs /$\sigma$ 			& avg. fitness score /$\sigma$ 		& avg distance /$\sigma$ 		& avg. regress /$\sigma$ 			& avg. fitness increase /$\sigma$ 	\\ \midrule
+				{\Large MarI/O} 			& $\Big\uparrow$ /$\times$      & $\Big\downarrow$ /$\downarrow$ 	& $\Big\uparrow$ /$\times$  	& $\Big\downarrow$ /$\downarrow$    & $\Big\uparrow$ /$\times$          \\
+				{\Large NEAT\_FlappyBird}	& $\bigtimes$ /$\downarrow$    	& $\bigtimes$ /$\downarrow$ 		& $\Big\uparrow$ /$\times$  	& $\bigtimes$ /$\times$    			& $\Big\uparrow$ /$\times$          \\ \bottomrule
+			\end{tabular}
+		}
+		\caption{Date Trend Comparison of different games and their \gls{neat} implementation}
+		\label{tab:comp}
+	\end{table} 
+	\\diff:
+	\begin{enumerate}
+		\item The first observations indicate that the average fitness score of each generation drops when establishing a bigger initial population. !However the standard deviation tend to drop as well.
+		\item However, the average regress (if present) becomes lower with bigger population sizes and fewer generations, as well as it's deviation.
+		\item The standard deviation of the average fitness increase is relatively similar.
+	\end{enumerate}
+	sim:
+	\begin{enumerate}
+		\item Also the distance of the median of the species to the best run of the generation seam to become greater with a greater population count in generation 0.
+		\item population 250, the average fitness increase is higher than in the other two simulation classes.
+		\item It is interesting to see how the fitness increase compares to the average distance value. Even thought the fitness increase of population class 250 is much higher than the fitness increase of population class 10, the distance remains largs which indicates that the majority of runs stayed low and the average score of population class 10 is higher than in the other two population classes. Still the other two classes remained more stable when taking the average regress into account.
+	\end{enumerate}
+	\item future studies
 	\begin{itemize}
-		\item population size (maybe not choosen well => futer work)
+		\item genome/generation plot \& differences to other plot
+		\item compare calculations with all data not only with maxfitness in case of $average\_fitness\_increase$ and $average\_regress$
+		\item check in text for (future or further)
 	\end{itemize}
-	\item many wheels that can be turend
-	\item differen setup => similar goal
-	\item further work, checking influence of nn parameters
-
+	\item test MarI/O previous evolutions on other levels (short \ref{sec:conclusion})
 \end{enumerate}
-
-\section{Conclusion}
-\label{sec:compare:conclusion}

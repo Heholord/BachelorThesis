@@ -118,6 +118,36 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{ga}{}%
+{%
+\gls@defglossaryentry{ga}%
+{%
+name={GA},%
+sort={GA},%
+type={acronym},%
+first={Genetic Algorithm\glsspace (GA)},%
+firstplural={Genetic Algorithms\glsspace (GAs)},%
+text={GA},%
+plural={GAs},%
+description={Genetic Algorithm},%
+descriptionplural={Genetic Algorithm\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Genetic Algorithm},%
+longplural={Genetic Algorithms},%
+short={GA},%
+shortplural={GAs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
 \ifglsentryexists{lua}{}%
 {%
 \gls@defglossaryentry{lua}%

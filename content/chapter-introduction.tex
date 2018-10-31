@@ -12,19 +12,13 @@ http://www.charleslipson.com/How-to-write-a-thesis.htm
 \section{Motivation and Problem Statement}
 \label{sec:intro:motivation}
 In the last decade may different solutions for \gls{nn} have been implemented, whereas these implementations propose various changes like the amount and distribution of connections between neurons, the weight calculations between neuronal connections or the amount of neuronal layers \todo{xor problem} of the network as well as other structural decisions. 
-The efficiency of these algorithms depend on the problem space, which they were tested on. For example ....\todo{concrete examples}
-\begin{enumerate}
-	\item einleitung komplexe aufgaben
-	\item bisher: nn networkd
-	\item genetic algorithms
-	\item nn + ga => neat and others
-	\item \url{https://www.reddit.com/r/NeuralNetwork/comments/4nea5i/how_to_decide_what_neural_network_architecture_to}
-	\item One complex problem are diverse games. 
-	\item different games and criteria
-	\item different algorithms and neat
-	\item expectations of this bachelor work
-\end{enumerate}
-
+The efficiency of these algorithms depend on the problem space and the environment in which they were tested. For example ....\todo{concrete examples}\\
+One popular method of adapting a neuronal network is via \gls{ga}, since \gls{ga}s offer a way to find new and possibly enhanced patterns in a reasonable (but not necessarily fast) time. In the case of \gls{nn}s, \gls{ga}s are used to find new connections between neurons or different structures inside the network. One popular implementation of this combination is \gls{neat}, among others. \todo{find paper about GA claims} \todo{write about neat}\\
+Since it not trivial to decide how the \gls{nn} architecture should look like \gls{neat} builds up it's own architecture in a minimalistic way.\\
+These \gls{nn} implementations are used in various fields as mentioned before. One field with rather clear boundaries are games, compared to real world applications. Still there are many types of games with different complexities. Therefore this work analyses two different games which are played by autonomous \gls{neat} implementations for these games.\\
+The first \gls{neat} implementation is MarI/O for the game Super Mario World, made by a popular YouTube-uploader called SethBling \footnote{\url{https://www.youtube.com/channel/UC8aG3LDTDwNR1UQhSn9uVrw}, last accessed on 30th of October 2018}. Since Super Mario World is a rather complex game, the results are later compared to a \gls{neat} implementation for Flappy Bird developed for a coding challenge called NEAT\_FlappyBird \footnote{\url{https://github.com/llSourcell/neuroevolution-for-flappy-birds}, last accessed 30th October 2018}\footnote{\url{https://github.com/rsk2327/NEAT_FlappyBird}, last accessed 30th October 2018}. \\
+Super Mario World and Flappy Bird are two different games in their achievements. A level of Super Mario World has a finite game map but still offers a high level of complexity compared to the input possibilities of Flappy Bird. However, Flappy Bird has an infinite and self generating map and this game can be quite challenging to humans because of the unexpected map and fixed game speed.\\ 
+Still it is expected that the game solving implementation for Super Mario World takes longer to complete a level than to find a solution for Flappy Birds that can exceed a certain threshold score because of the many possibilities of solving a level in Super Mario World.
 
 \section{Results}
 \label{sec:intro:results}
