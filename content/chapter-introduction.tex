@@ -5,39 +5,30 @@
 
 \chapterprecishere{"Some people worry that artificial intelligence will make us feel inferior, but then, anybody in his right mind should have an inferiority complex every time he looks at a flower."\par\raggedleft--- \textup{Alan Kay}, (Computer Scientist)}
 
-
-https://sokogskriv.no/en/writing/structure/structuring-a-thesis/
-http://www.charleslipson.com/How-to-write-a-thesis.htm
-
 \section{Motivation and Problem Statement}
 \label{sec:intro:motivation}
-In the last decade may different solutions for \gls{nn} have been implemented, whereas these implementations propose various changes like the amount and distribution of connections between neurons, the weight calculations between neuronal connections or the number of neuronal layers \todo{xor problem} of the network as well as other structural decisions. 
+In the last decade may different solutions for \gls{nn} have been implemented, whereas these implementations propose various changes like the amount and distribution of connections between neurons, the weight calculations between neuronal connections or the number of neuronal layers of the network as well as other structural decisions. The most popular subject of this questions is the XOR affair, which was proven to be unsolvable by a single layer \gls{nn}\cite{newell_perceptrons._1969}
 The efficiency of these algorithms depends on the problem space and the environment in which they were tested. Two popular fields of using \gls{ann}s are in image recognition and forecasting.\cite{khandelwal_time_2015, mehdy_artificial_2017}\\
-One popular method of adopting a neuronal network is via \gls{ga} since \gls{ga}s offer a way to find new and possibly enhanced patterns in a reasonable (but not necessarily fast) time. In the case of \gls{nn}s, \gls{ga}s are used to find new connections between neurons or different structures inside the network. One popular implementation of this combination is \gls{neat}, among others.\cite{stanley_evolving_2002} \todo{find paper about GA claims} \todo{write about neat}\\
+One popular method of adopting a neuronal network is via \gls{ga} since \gls{ga}s offer a way to find new and possibly enhanced patterns in a reasonable (but not necessarily fast) time. In the case of \gls{nn}s, \gls{ga}s are used to find new connections between neurons or different structures inside the network. One popular implementation of this combination is \gls{neat}, among others.\cite{stanley_evolving_2002}\\
 Since it not trivial to decide how the \gls{nn} architecture should look like \gls{neat} builds up it's architecture autonomously and in a minimalistic way.\\
 These \gls{nn} implementations are used in various fields as mentioned before. One field with rather clear boundaries is games, compared to real-world applications. Still, many types of games with different complexities exist\cite{risi_neuroevolution_2014}. Therefore this work analyses two different games which are played by autonomous \gls{neat} implementations for these games.\\
 The first \gls{neat} implementation is MarI/O for the game Super Mario World, made by a popular YouTube-uploader called SethBling\footnote{\url{https://www.youtube.com/channel/UC8aG3LDTDwNR1UQhSn9uVrw}, last accessed on 30th of October 2018}. Since Super Mario World is a rather complex game, the results are later compared to a \gls{neat} implementation for Flappy Bird developed for a coding challenge called NEAT\_FlappyBird \footnote{\url{https://github.com/llSourcell/neuroevolution-for-flappy-birds}, last accessed 30th October 2018}\footnote{\url{https://github.com/rsk2327/NEAT_FlappyBird}, last accessed 30th October 2018}. \\
 Super Mario World and Flappy Bird are two different games when considering their achievements. A level of Super Mario World has a finite game map but still offers a high level of complexity compared to the input possibilities of Flappy Bird. However, Flappy Bird has an infinite and self-generating map. Flappy Bird is quite challenging to humans because of the unexpected map and fixed game speed.\\ 
-Still, it is expected that the game solving implementation for Super Mario World takes longer to complete a level than to find a solution for Flappy Birds that can exceed a certain threshold score because of the many possibilities of solving a level in Super Mario World.
+Still, it is expected that the game solving implementation for Super Mario World takes longer to complete a level than to find a solution for Flappy Bird that can exceed a certain threshold score because of the many possibilities of solving a level in Super Mario World.
 
 \section{Results}
 \label{sec:intro:results}
-\begin{enumerate}
-	\item what was interesting to see
-	\item contrast to expectations
-\end{enumerate}
+The \gls{neat} algorithm finds a solution for both environments. MarI/O finds a solution in the majority of runs, namely 7 times out of 9. NEAT\_FlappyBird exceeded a defined threshold in all runs.\\
+Interestingly, many correlations that could be found in the environment Super Mario World, could not be confirmed in Flappy Bird. The results seemed more random in Flappy Bird, which can be caused by the random environment generation of Flappy Bird, wheras Super Mario World has predefined levels.\\
+However, what could be concluded consistently, was that the average distance from the score of the majority of runs (calculated by the median) to the best runs of each generation tend to rise when using a higher population. Since there where fewer generations when the population count increased, the average fitness increase from generation to generation increased as well in both games.
 
-
-\subsection{Some References}
-\label{sec:intro:results:refs}
-
-\section{Thesis Structure}
-\label{sec:intro:structure}
-
-\textbf{Chapter \ref{sec:related}} \\[0.2em]
-
-\textbf{Chapter \ref{sec:analysis}} \\[0.2em]
-
-\textbf{Chapter \ref{sec:compare}} \\[0.2em]
-
-\textbf{Chapter \ref{sec:conclusion}} \\[0.2em]
+%\section{Thesis Structure}
+%\label{sec:intro:structure}
+%
+%\textbf{Chapter \ref{sec:related}} \\[0.2em]
+%
+%\textbf{Chapter \ref{sec:analysis}} \\[0.2em]
+%
+%\textbf{Chapter \ref{sec:compare}} \\[0.2em]
+%
+%\textbf{Chapter \ref{sec:conclusion}} \\[0.2em]

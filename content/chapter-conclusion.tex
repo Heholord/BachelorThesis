@@ -7,20 +7,15 @@
 
 % \cleanchapterquote{By far, the greatest danger of Artificial Intelligence is that people conclude too early that they understand it.}{Eliezer S. Yudkowsky}{(Artificial Intelligence Researcher)}
 
-https://sokogskriv.no/en/writing/structure/structuring-a-thesis/
-http://www.charleslipson.com/How-to-write-a-thesis.htm
-
-\begin{itemize}
-	\item 
-	\item test MarI/O previous evolutions on other levels (long: what would be expected, how long to adapt to differences, would be better than start from anew)
-	\item compare MarI\O to other solutions (see paper unofficial paper https://www.cs.cmu.edu/~tom7/mario/mario.pdf)
-\end{itemize}
-
-
-\section{Stuff}
-\label{sec:conclusion:sec1}
-
+The \gls{neat} algorithm successfully provided a solution for both environments. Still, the outcome in relation to the population size is more predictable in the rather static environment of Super Mario World when compared to Flappy Bird. As mentioned in the paper \cite{kohl_integrated_2011}, the usual \gls{neat} algorithm doesn't perform so well in an environment that has abrupt and unexpected changes. The concept of the game Flappy Bird might be clear, however, the generation of the world is random, which might influence the behavior of the algorithm as it can be seen in chapter \ref{sec:analysis:flappy}. Possible future studies might show if the proposed algorithms SNAP-NEAT of the paper \cite{kohl_integrated_2011}, enable more predictable results.
 
 \section{Future Work}
 \label{sec:conclusion:future}
 
+In this work, some open questions can be found, which require future analyzes. \\
+One of them is to see how the genomes behave directly compared to the generations when ignoring the species. How would this influence the plot?\\
+In this work, I mostly compared the trends of the best runs of each generation. How do the average fitness increase and the average regress behave when applied to the majority of runs and not only the best runs of each generation.\\
+In this analyzes, there were many parameters ignored as mentioned in chapter \ref{sec:compare:params}. How do this parameters influence the results, or do they lead to similar outcomes with different paths (details)?
+
+As it was mentioned earlier in this conclusion, the \gls{neat} algorithm doesn't allow a trend prediction in all cases when it comes to dynamic worlds. It would be interesting to see how the learned \gls{neat} algorithm reacts in other levels of Super Mario World after it completed a previous level multiple times. Would it take long to adapt to the new world or would the problems stated in the paper \cite{kohl_integrated_2011} come to display, since \gls{neat} results into a form of over-fitting?\\
+Further it would be interesting to see how other algorithms perform compared to MarI/O. For example, in an unofficial paper\footnote{\url{https://www.cs.cmu.edu/~tom7/mario/mario.pdf}, last accessed on 2nd November 2018} there was a solution proposed where a lexicographic ordering was used.\\

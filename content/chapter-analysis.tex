@@ -3,12 +3,7 @@
 \chapter{Generation Learning in Computer Games}
 \label{sec:analysis}
 
-\begin{enumerate}
-	\item What was measured: fitness development within neats generations 
-	\item two different games: marI/O and flappy
-	\item different challenges within the game
-	\item 
-\end{enumerate}
+In this chapter, the algorithm \gls{neat} (see chapter \ref{sec:related:neat}) will be applied on the two environments Super Mario World and Flappy Bird. These environments are very different from their inputs and their goals. In Super Mario World many input possibilities are given, whereas Flappy Bird allowed only one input. These inputs should be calculated by the \gls{ai} implementation, namely the \gls{neat} algorithm. The outcome of the algorithm should result in a certain score called the fitness. Later in this chapter, the fitness progress over the generations will be shown on a graph. The result of this simulations is to see how the algorithm behaves with this different challenges.
 
 	\section{MarI/O}
 		\label{sec:analysis:mario}
@@ -21,8 +16,29 @@
 		\end{figure}
 		As mentioned in section \ref{sec:related:tools} MarI/O (see figure \ref{fig:mario}) is an implementation of \gls{neat}-algorithm written in \gls{lua}. It provides a solution for automatic learning of the game Super Mario World. In Super Mario World a level is a two-dimensional map with steady as well as moving obstacles.
 		Some of them block the path to the goal and others cause damage to Mario's health. A few of them give health upgrades to Mario or add coins to the player's account, although the coins are ignored in the implementation of the \gls{ai}. Since there are many positions in which Mario can stay and the speed of the game depends mostly on the player and his/her/its decisions the environment of Super Mario World is rather complex when compared to the second game Flappy Bird \ref{sec:analysis:flappy}.\\
-		This complex world leaves the expectation that many hundred thousand runs are necessary to learn how to complete a level. However, MarI/O implementation reached to goal after approximately $2664.29$ runs on average in the simulations described later in this section. Still, 2 of the 9 simulations didn't reach the goal once.\\
-		\todo{fitness function, formlar? when was goal reached} \\
+		This complex world leaves the expectation that many hundred thousand runs are necessary to learn how to complete a level. However, MarI/O implementation reached to goal after approximately $2664.29$ runs on average in the simulations described later in this section. Still, 2 of the 9 simulations didn't reach the goal once.
+		
+		For the selection of the fittest genomes a fitness function has to be defined. In the \gls{lua}-script following lines of code indicate the fitness: 
+		\lstset{style=myLuastyle} 
+		\begin{lstlisting}[basicstyle=\tiny]
+		local fitness = rightmost - pool.currentFrame / 2
+		\end{lstlisting}
+		whereas rightmost is the furthest point reached so far. It was defined prior as:
+		\begin{lstlisting}[basicstyle=\tiny]
+		getPositions()
+		if marioX > rightmost then
+			rightmost = marioX
+			...
+		end
+		\end{lstlisting}
+		Basically the goal is reached at a fitness score of around 3900 to 4000. For the means of completeness, it should be mentioned that there is also a bonus programmed that is calculated like the following:   
+		\begin{lstlisting}[basicstyle=\tiny]
+		if gameinfo.getromname() == "Super Mario World (USA)" and rightmost > 4816 then
+			fitness = fitness + 1000
+		end
+		\end{lstlisting}
+		Still, in none of the 37957 runs made, the bonus was applied.\\
+		
 		Later in this section, 3 figures with 3 similar graphs will be shown. The three different figures display the success of the algorithm in different classes of initial population size. Since the \gls{neat}-algorithm used does not produce a deterministic amount of populations after the first generation (in general: Generation 0), the initial population size defines these classes. There were three classes chosen with a scaling factor of 5 between them. These initial population sizes are 10, 50 and 250. Whether or not the initial population sizes are well-chosen will be discussed shortly in the conclusion section (see \ref{sec:compare:params}) of this chapter. Depending on the evolution of the \gls{nn}, there are a certain amount of generations evolved. Every generation contains their own set of species. And on the other hand, the species contain the genomes. In generation 0 every species contains only one genome each. The sum of all genomes in all species of a generation is called the population. In the cases where the initial population size is 10 or 50 over time to many generations were created to show a viewable graph in the end. That's why only 30 generations were picked in the display with even distances between them. Still, a continuous line with the best run of a population is showed above all generations, even the skipped ones. \\
 		In the later descriptions of the population classes, there are two types of runs introduced. First is the "plot-run" which indicates the simulation and the graph. Inside this graph, there were many "runs" which represent the runs of the population (genomes) of each species. In figure \ref{fig:mario} there are 3 individual runs displayed. On average one plot-run consists of $4217.\overline{2}$ runs, whereas population 10 has $2828$ runs on average, population 50 consists of $4494.\overline{6}$ runs on average and population 250 of $5329$ runs averaged.\\
 		In order to understand the fundamental differences of these simulations, the population classes are examined in more detail: 
@@ -119,14 +135,15 @@
 				\caption{MarI/O Population Comparison Overview}
 				\label{tab:mario}
 			\end{table}
-			\todo{Differences and similarities between runs in graph} \\
 			In order to compare the results, 5 distinct values (see table \ref{tab:mario}) of the plot-runs where calculated, as three of them were introduced in more detail earlier in this section \ref{par:mario10}. The first observations indicate that the average fitness score of each generation drops when establishing a bigger initial population. However, the standard deviation tends to drop as well. \\
 			Also, the distance of the median of the species to the best run of the generation seems to become greater with a greater population count in generation 0. However, the average regress (if present) becomes lower with bigger population sizes and fewer generations, as well as it's deviation. Since there are fewer generations in the simulations with an initial population of 250 and these simulations having similar achievements, the average fitness increase is higher than in the other two simulation classes. The standard deviation of the average fitness increase is relatively similar.\\
 			It is interesting to see how the fitness increase compares to the average distance value. Even though the fitness increase of population class 250 is higher than the fitness increase of population class 10, the distance remains large which indicates that the majority of runs stayed low and the average score of population class 10 is higher than in the other two population classes. Still, the other two classes remained more stable when taking the average regress into account. \\
 			Another interesting point of view is the reaching of the end of the level (the goal). In all population classes, the goal was reached even though population class 1 and 2 didn't reach the goal in one plot-run each. Population 10 reached the goal in the first $24.48\%$ on average, only including the cases where the goal was reached. Population 50 reached the goal in the first $40,24\%$ on average and population class 250 in the first $69,47\%$.\\
 			To summarize the results roughly it can be said that an initial population size of 10 promises faster and better results in a complex environment like Super Mario World, however, more stability can be reached when increasing the initial population size.
 		
-	% FLAPPY BIRD ###############################################################
+		
+	
+	\newpage % FLAPPY BIRD ###############################################################
 	
 	\section{NEAT\_FlappyBird}
 		\label{sec:analysis:flappy}
@@ -139,8 +156,28 @@
 		\end{figure}
 	
 		As mentioned in section \ref{sec:related:tools}, NEAT\_FlappyBird (see figure \ref{fig:flappy}) is an implementation of \gls{neat}-algorithm written in Python using the \gls{neat} framework NEAT-Python \footnote{\url{https://neat-python.readthedocs.io}, last accessed 30th October 2018}. It provides a solution for mastering the game Flappy Bird which was also rewritten in Python. In Flappy Bird, a level is a two-dimensional, infinite map with obstacles along the way. The player, in the representation of a bird, moves at a constant speed to the right, where new obstacles are generated. These obstacles are pipes which create gaps, through which the bird has to fly (see figur\ref{fig:flappy}). \\
-		Therefore the player has only one input, namely if he/she/it wants to fly up, or if not then the player automatically falls down. Since there is only one decision to make the game is rather simple compared to Super Mario World (see section \ref{sec:analysis:mario}).\\
-		\todo{fitnessfunction, formlar?}
+		Therefore the player has only one input, namely if he/she/it wants to fly up, or if not then the player automatically falls down. Since there is only one decision to make the game is rather simple compared to Super Mario World (see section \ref{sec:analysis:mario}).
+		
+		For the algorithm, a fitness function was chosen that takes the passed pipes as well as the vertical distance into account: 
+		\lstset{style=myPythonstyle} 
+		\begin{lstlisting}[basicstyle=\tiny]
+		pipe1Pos = pipe1.move()
+		if pipe1Pos[0] <= int(SCREENWIDTH * 0.2) - int(bird.rect.width/2):
+			if pipe1.behindBird == 0:
+				pipe1.behindBird = 1
+				SCORE += 10
+				
+		pipe2Pos = pipe2.move()
+		if pipe2Pos[0] <= int(SCREENWIDTH * 0.2) - int(bird.rect.width/2):
+			if pipe2.behindBird == 0:
+				pipe2.behindBird = 1
+				SCORE += 10
+				
+		vertDist = (((bird.y - centerY)**2)*100)/(512*512)
+		time += 1
+		fitness = SCORE - vertDist + (time/10.0)
+		\end{lstlisting}
+
 		This simple set-up creates the expectation that the \gls{neat} algorithm should be able to find a solution with a score above a certain threshold (which is defined later in this section). In fact, all simulations exceeded this threshold and the generations used where far lower the maximum generation defined for this simulations. NEAT\_FlappyBird reached the fitness threshold after $1047.\overline{4}$ runs on average. \\
 		In this section, 3 figures similar to the ones used in section \ref{sec:analysis:mario} are shown. However, this time these figures are split into two ranges since the details of the graph are too far apart. Therefore a simulation of a population class contains 3 plot-runs whereas one plot-run is displayed in 2 graphs of different ranges.  For the size of the population classes, the same 3 sizes were chosen as used in the MarI/O simulation, which are 10, 50 and 250. \\
 		Again a maximum amount of 30 generations are displayed in the graphs when the generation size was bigger than 30. Luckily, this was only the case in the population 10 simulations. Also, again, the generations contain the species, which by themselves contain the genomes (the population). 
@@ -239,20 +276,18 @@
 				\caption{Flappy Bird Population Comparison Overview}
 				\label{tab:flappy}
 			\end{table}
-	
-			\todo{Differences and similarities between runs in graph} \\
 			In order to compare the results, the same 5 distinct values (see table \ref{tab:flappy}) of the plot-runs where calculated, which were taken into consideration in section \ref{sec:analysis:mario}.\\
 			The most obvious observation is that the average fitness increase rises with the number of populations used since the generations remain low in the count when the threshold is reached. Secondly, the average distance (from the species median to the best genome run) tend to rise as well with a bigger population size.\\ 
 			The other measurement values leave little to no conclusions since the values don't rise or fall with growing/shrinking population sizes. The average regress, for example, tends to rise between population class 10 and 50 but is 0 in population class 250. The question is if the population class 250 would have a greater regress than the other two population instances if there would be any (future) regress. The average fitness score is non-rising/shrinking as well, however, the standard deviation seems to shrink with greater population size. Probably, the negative values of the fitness score depend on the environment of Flappy Birds, where only partially well-learned birds can make it through the first obstacle (namely the pipes).\\
 			Since there is no defined goal, the fitness-threshold can be taken into consideration when deciding how good simulations have been. Since the threshold was exceeded in every plot-run, the last generation holds the best run of a plot-run. The fewest average runs were done by population class 50 with averaged $626.\overline{6}$ runs. However, population class 250 had the smallest standard deviation of their running length, which indicates that the goal can be more consistently reached around the $831.\overline{6}$th run compared to population count 10 and 50.
 			
-		\subsection{Plain Machine learning flappy bird}
-			\begin{enumerate}
-				\item better results
-				\item multi simulation made it easier
-				\item easy algorithm for easy environment might be explanation for better results
-				\item \begin{enumerate}
-					\item Differences between runs (lucky runs with 4th champion generation)
-				\end{enumerate}
-			\end{enumerate}
-			\paragraph{Comparison to \gls{neat} results}
+%		\subsection{Plain Machine learning flappy bird}
+%			\begin{enumerate}
+%				\item better results
+%				\item multi simulation made it easier
+%				\item easy algorithm for easy environment might be explanation for better results
+%				\item \begin{enumerate}
+%					\item Differences between runs (lucky runs with 4th champion generation)
+%				\end{enumerate}
+%			\end{enumerate}
+%			\paragraph{Comparison to \gls{neat} results}

@@ -4,25 +4,24 @@
 \chapter{Comparison and Meta-Analysis}
 \label{sec:compare}
 
-\section{Ignored Parameters}
+Much data was gathered and now we want to find out what this data indicates and how it can be used for future projects, maybe even real-world applications. 
+
+\paragraph{Ignored Parameters}
 \label{sec:compare:params}	
-	\begin{enumerate}
-		\item abstract parameters
-		\begin{itemize}
-			\item population size (maybe not choosen well => futer work)
-			\item Population sizes smart? (10, 50, 250)
-			\item many wheels that can be turend
-			\item further work, checking influence of nn parameters
-		\end{itemize}
-		\item differen setup => similar goal
-		\item differences / similarities in neat implementation (fixed size in machine learning flappy bird whereas dynamic species with marI/O)
-	\end{enumerate}
+	In order to find a straight line for analyzing the data, many parameters were set by their default value. Other parameters have abstract meanings or simply define boundaries that didn't have to be considered. For example, in the configuration file of the \gls{neat} framework used in NEAT\_FlappyBird there are 63 lines of configuration.\\
+	This complex set-up of the games leaves many wheels to turn and also give space to study their effect on the results systematically in future works. One starting-point can be the \gls{nn} parameters that were pre-specified for this simulations.\\
+	Furthermore, the \gls{neat} implementations were not equal. First of all, they were written in two different programming/scripting languages. Furthermore, MarI/O was written from scratch and NEAT\_FlappyBird used a \gls{neat}-framework that allowed a high level of set-up-configurations and even self-implementations for various aspects of the algorithm. In this application only the default implementations were used as indicated by the following config initialization:
+	\lstset{style=myPythonstyle} 
+	\begin{lstlisting}[basicstyle=\small]
+	config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, 
+	neat.DefaultSpeciesSet, neat.DefaultStagnation, "config") 
+	\end{lstlisting}
+	However, despite the different set-up and configuration some similar results could be achieved using the \gls{neat} algorithm:
 
 \section{Comparison of the different game environment}
 \label{sec:compare:compare}	
-	\begin{enumerate}
-	\item differences / similarities in outcome
-	table with all the data collected (non concrete values because they depend on games (arrows)) 		
+	However, one parameter that was manipulated for this analyses is the initial population size. In MarI/O the initial population size spawned the defined amount of species with one genome each. In flappy bird, however, there were as many genomes launched as defined by the population size and after the run, they got assigned to their species.\\
+	In order to display the differences in an overview, a table is presented containing the data trends. Despite their similarity, different fitness-functions have been taken to evaluate the success of a genome. This results in different scales in their values. That's why a more abstract indicator of the trend was chosen instead of the numbers. An arrow up ($\Big\uparrow$) indicates that the value was rising with a bigger initial population size and an arrow down ($\Big\downarrow$) indicates the opposite. When there is an $\bigtimes$ shown, it means that no trend could be found within the three population classes.
 	\begin{table}[h]
 		\centering
 		\resizebox{\textwidth}{!}{
@@ -36,24 +35,13 @@
 		\caption{Date Trend Comparison of different games and their \gls{neat} implementation}
 		\label{tab:comp}
 	\end{table} 
-	\\diff:
-	\begin{enumerate}
-		\item The first observations indicate that the average fitness score of each generation drops when establishing a bigger initial population. !However the standard deviation tend to drop as well.
-		\item However, the average regress (if present) becomes lower with bigger population sizes and fewer generations, as well as it's deviation.
-		\item The standard deviation of the average fitness increase is relatively similar.
-	\end{enumerate}
-	sim:
-	\begin{enumerate}
-		\item Also the distance of the median of the species to the best run of the generation seam to become greater with a greater population count in generation 0.
-		\item population 250, the average fitness increase is higher than in the other two simulation classes.
-		\item It is interesting to see how the fitness increase compares to the average distance value. Even thought the fitness increase of population class 250 is much higher than the fitness increase of population class 10, the distance remains largs which indicates that the majority of runs stayed low and the average score of population class 10 is higher than in the other two population classes. Still the other two classes remained more stable when taking the average regress into account.
-	\end{enumerate}
-	\item future studies
-	\begin{itemize}
-		\item genome/generation plot \& differences to other plot
-		\item compare calculations with all data not only with maxfitness in case of $average\_fitness\_increase$ and $average\_regress$
-		\item check in text for (future or further)
-	\end{itemize}
-	\item test MarI/O previous evolutions on other levels (short \ref{sec:conclusion})
-	\item flappy bird problems with abrupt pattern changes (one gap low and other high or vice versa) when average gaps are close. @see https://www.cs.utexas.edu/users/ai-lab/?kohl:ieeetec11
-\end{enumerate}
+	At first, the differences are pointed out which are the following: 
+	In MarI/O the average fitness score dropped with a bigger initial population. In NEAT\_FlappyBird there couldn't be a correlation drawn between the population size and the average fitness score.\\
+	However, the standard deviation of the average fitness score dropped in both environments. This outcome is reasonable since there are fewer generations when the initial population size is larger.\\
+	Further, in MarI/O the average regress (if present) becomes lower with bigger population sizes, as well as it's deviation. Interestingly, in NEAT\_FlappyBird no trend could be found at all since the population class had a higher average regress than the population class 10 but population class 250 didn't have any regress at all.\\
+	The standard deviation of the average fitness increase had no trend in the NEAT\_FlappyBird implementation, however, it was quite similar in MarI/O's simulations. Still, the trend of the average fitness increase is the same in both simulations.
+	
+	When looking at the similarities of the results of the two environments there are two trends visible:
+	One not so obvious correlation is that the distance of the median of the species to the best run of each generation is becoming greater with a greater population count. However, the standard deviation of this data is quite high in some cases. Still, in population class 250, the standard deviation was low when compared to the average regress value in MarI/O as well as NEAT\_FlappyBird.\\
+	A more reasonable trend is that the population class 250 has a bigger average fitness increase than the other two simulation classes since the number of generations are smaller, although the goal/threshold was reached as well.\\
+	When comparing the average distance with the average fitness increase, it can be seen that there are only a few genomes in the runs of population class 250 that reached a higher score, however, the majority of runs remained low. This division becomes larger the bigger the initial population size is. In MarI/O the average regress became lower with a higher population count, which indicates a certain stability. However, this stability could not be found in Flappy Bird. A reason for this can be the known bad performance of neat in extreme situations, since Flappy Bird has a randomly generated and therefore unknown world, whereas Super Mario World is deterministic in its level behavior\cite{kohl_integrated_2011}.

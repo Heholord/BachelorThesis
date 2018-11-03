@@ -10,27 +10,21 @@
 	Still \gls{neat} has proven to provide solutions to 3 common problems \cite{stanley_evolving_2002}: 
 	\begin{enumerate}
 		\item \textbf{Competing Conventions}
-			In ordinary \gls{ga}s it happens that genomes which hold similar solutions but are differently encoded create worse children than their parents have been. \\
-			In \gls{neat} historical markings are introduced, namely the innovation number. When a new structure within the genomes genotypes is created, this structure will be assigned with an incremented innovation number. So whenever two individuals are chosen to mate, their genomes with the same innovation number (therefore it is a historical marking) are aligned and the different genomes, which don't align with the ones from the partners, are exchanged.
+			In ordinary \gls{ga}s it can happen that genomes which hold similar solutions but are differently encoded create worse children than their parents have been. \\
+			In \gls{neat} historical markings are introduced, namely the innovation number. When a new structure within the genomes is created, this structure will be assigned with an incremented innovation number. So whenever two individuals are chosen to mate, their genes with the same innovation number (therefore it is a historical marking) are aligned and the different genes, which don't align with the ones from the partners, are exchanged.
 		\item \textbf{Protecting Innovation through Speciation}
-			Many times genomes get eradicated or lose informations => species and historical markings (innovation number)
+			When new genomes are created through crossover they often end up worse than before since they need time to adapt and specialize. However usual genetic algorithms are not very tolerant to this type of trainings. That's why \gls{neat} introduced the concept of specification, like it happens in nature. Genomes (the population) then get divided into species groups that protect genomes that still have to optimize. For the genomes it is less likely to mate with individuals from other species even when their fitness is equally high. Still this behavior has proven to support diversity because a species with many genomes shared a higher fitness, allowing some individuals inside the species to differentiate.
 		\item \textbf{Topological Innovation}
-			Big or random initial topology can cause problems
+			Last but not least, \gls{neat} keeps the topology of the network minimal. In the paper \cite{stanley_evolving_2002} the authors state that random initializations of the network cause many problems, like inefficient networks or no paths from input to output neurons. It takes time to sort out the problems caused by random initial topologies. By keeping the network as simple as possible these problems don't come into weight and the search space is as minimal as possible, which enhances performance.
 	\end{enumerate}
-
-https://stackoverflow.com/questions/45390481/what-is-neat-neuroevolution-of-augmenting-topologies
-
 
 \section{Tools}
 \label{sec:related:tools}
-
-\begin{enumerate}
-	\item MarI/O
-	\item Flappy Bird
-	\begin{itemize}
-		\item NEAT Flappy
-		\item Machine Flappy
-	\end{itemize}
-	\item Python for statistics
-\end{enumerate}
+For the completion of this work, some other work was taken and further analyzed. Of course these works used programs, scripts and other tools for their work as well, still, I want to give an entry reference, so others can reproduce my work at wish.
+\paragraph{MarI/O}
+A popular YouTuber called SethBing published his project MarI/O on YouTube and explained rough details of it shortly\footnote{\url{https://www.youtube.com/watch?v=qv6UVOQ0F44}, last accessed on 31st October 2018}. However, he also published the code he produced\footnote{\url{https://pastebin.com/ZZmSNaHX}, last accessed on 31st October 2018}, which was used for this work. MarI/O is an implementation of the \gls{neat}-algorithm mentioned prior in this chapter(see \ref{sec:related:neat}) used for the video game Super Mario World. The program is written in \gls{lua}-script and can be used with the Blitzhawk emulator\footnote{\url{http://tasvideos.org/BizHawk.html}, last accessed on 31st October 2018}. 
+\paragraph{NEAT\_FlappyBird}
+The second \gls{neat} implementation is called NEAT\_FlappyBird which is written in Python for a coding challenge\footnote{\url{https://github.com/rsk2327/NEAT_FlappyBird}, last accessed on 31st October 2018}\footnote{\url{https://github.com/llSourcell/neuroevolution-for-flappy-birds}, last accessed on 31st October 2018}. This implementation uses a Python-framework for \gls{neat} called NEAT-Python\footnote{\url{https://neat-python.readthedocs.io}, last accessed 30th October 2018}. The game Flappy Bird was rewritten in Python as well with the pygame-framework\footnote{\url{https://www.pygame.org}, last accessed on 31st October 2018}.
+\paragraph{Python for statistics}
+For this work the used implementations were manipulated, so they write the results into a text file. This text-file was later analyzed using Python-scripts as well. For the statistics the default python statistics framework was used. For the plots, I used the framework matplotlib.
 

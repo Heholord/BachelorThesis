@@ -25,6 +25,26 @@
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
 
 \usepackage{bbding}
+\usepackage{listings, lstautogobble, setspace}
+
+\lstdefinestyle{myLuastyle}
+{
+	language         	= {[5.0]Lua},
+	basicstyle       	= \ttfamily,
+	showstringspaces 	= false,
+	upquote          	= true,
+	autogobble 		 	= true,
+	showspaces			= false,
+}
+\lstdefinestyle{myPythonstyle}
+{
+	language         	= {Python},
+	basicstyle       	= \ttfamily,
+	showstringspaces 	= false,
+	upquote          	= true,
+	autogobble 		 	= true,
+	showspaces			= false,
+}
 
 \epigraphfontsize{\small\itshape}
 \setlength\epigraphwidth{8cm}
@@ -136,11 +156,11 @@ Thank you!
 \end{acknowledgements*}
 
 \begin{kurzfassung}
-\todo{Ihr Text hier.}
+Im Alltag sind viele komplexe Aufgaben enthalten, die teilweise oder gänzlich noch nicht automatisierbar sind. Oftmals gibt es gute Ansätze dafür, jedoch bietet der künstlich generierte Automatismus noch zu viele Unbekannte. Um etwas näher an die Automatisierung von zurzeit manuell gesteuerten Prozessen zu kommen, befasst sich diese Arbeit mit NeuroEvolution of Augmenting Topologies(NEAT), einem Neuroevolutionsalgorithmus, der sein neuronales Netz mittels einem genetischen Algorithmus erweitert. Um eine breit gefächerte, dennoch überschaubare Testumgebung zu haben, wende ich den Algorithmus auf zwei unterschiedlichen Spielen an, nämlich Super Mario World und Flappy Bird. Ich werde zeigen, wie sich das Ergebnis verändert, wenn eine unterschiedlich große Initialpopulation gewählt wird, während die Simulationsläufe pro Populationsklasse annähernd konstant bleiben (n=2828 bis 5329 bei Super Mario World; n=627 bis 1684 bei Flappy Birds). Weiteres werde ich zeigen, dass die Ergebnisse nur teilweiße vergleichbar sind und woran das liegt. Es wird in der Arbeit beleuchtet, welche Parametereinstellungen für welche Umgebungen bessere Ergebnisse erzielen und ein Ausblick für zukünftige Arbeiten wird geboten.
 \end{kurzfassung}
 
 \begin{abstract}
-\todo{Enter your text here.}
+Everyday's life contains many complex tasks. This task can be automated only partially or jet not at all. However, there are good rudiments for this, still, the generated automatism holds many unknowns. In order to get closer to automating manually controlled processes, this work is contributed to NeuroEvolution of Augmenting Topologies(NEAT). NEAT is a neuroevolution algorithm, which builds up its neuronal network through a genetic algorithm. In order to have a broad, but still manageable test-environment, I use this algorithm on two different games. These games are Super Mario World and Flappy Bird. I will show how the results change if different initial population sizes will be used, although the number of simulations is staying constant to some degree (n=2828 to 5329 at Super Mario World; n=627 to 1684 at Flappy Birds). Furthermore, I will show that the results are comparable only partially and I will give the reasons for this. This work will point out what parameter settings to use for what environments to get better results. Last but not least I will give an outlook for future works.
 \end{abstract}
 
 % Select the language of the thesis, e.g., english or naustrian.
